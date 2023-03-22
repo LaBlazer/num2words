@@ -127,7 +127,6 @@ class Num2Word_SK(Num2Word_Base):
             return self._int2word(int(n))
 
     def pluralize(self, n, forms):
-        print(n)
         if n == 1:
             form = 0
         elif 5 > n:
