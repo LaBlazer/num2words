@@ -23,15 +23,15 @@ from .utils import get_digits, splitbyx
 ZERO = ('nula',)
 
 ONES = {
-    1: ('jeden',),
-    2: ('dva',),
-    3: ('tri',),
-    4: ('štyri',),
-    5: ('päť',),
-    6: ('šesť',),
-    7: ('sedem',),
-    8: ('osem',),
-    9: ('deväť',),
+    1: ('jeden', 'jeden'),
+    2: ('dva', 'dve'),
+    3: ('tri', 'tri'),
+    4: ('štyri', 'štyri'),
+    5: ('päť', 'päť'),
+    6: ('šesť', 'šesť'),
+    7: ('sedem', 'sedem'),
+    8: ('osem', 'osem'),
+    9: ('deväť', 'deväť'),
 }
 
 TENS = {
@@ -71,7 +71,7 @@ HUNDREDS = {
 }
 
 THOUSANDS = {
-    1: ('tisíc', 'tisíce', 'tisíc'),  # 10^3
+    1: ('tisíc', 'tisíc', 'tisíc'),  # 10^3
     2: ('milión', 'milióny', 'miliónov'),  # 10^6
     3: ('miliarda', 'miliardy', 'miliárd'),  # 10^9
     4: ('bilión', 'bilióny', 'biliónov'),  # 10^12
@@ -164,7 +164,7 @@ class Num2Word_SK(Num2Word_Base):
             if n2 == 1:
                 words.append(TENS[n1][0])
             elif n1 > 0 and not (i > 0 and x == 1):
-                words.append(ONES[n1][0])
+                words.append(ONES[n1][0 if x != 2 else 1])
 
             if i > 0:
                 words.append(self.pluralize(x, THOUSANDS[i]))
